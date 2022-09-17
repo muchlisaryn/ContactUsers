@@ -1,20 +1,22 @@
 import Navbar from "../component/Navbar"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function LandingPage () {
 
 
-const API = 'https://jsonplaceholder.typicode.com/users'
+const API = 'https://jsonplaceholder.typicode.com/posts'
 console.log(API)
 
-const [user, setUser] =useState([])
+const [user, setUser] = useState([])
+
+   const {userId} = useParams(user)
 
     useEffect(() => {
         axios.get(API)
         .then((Response) => {
-            console.log(Response.data)
+            console.log(Response)
             setUser(Response.data)
         }).catch ((error) => {
             console.log(error)
@@ -28,9 +30,8 @@ const [user, setUser] =useState([])
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">name</th>
-                    <th scope="col">email</th>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Title</th>
                     <th scope="col">Detail</th>
                     </tr>
                 </thead>
@@ -38,9 +39,8 @@ const [user, setUser] =useState([])
                 <tbody>
                 <tr>
                 <th scope="row">{e.id}</th>
-                <td>{e.name}</td>
-                <td>{e.username}</td>
-                <td><Link to={`/user/${e.id}`}><button>Detail</button></Link></td>
+                <th scope="row">{e.title}</th>
+                <td><Link to={`/user/post/${e.userId}`}><button>Detail</button></Link></td>
                 </tr>
             </tbody>
             )}
