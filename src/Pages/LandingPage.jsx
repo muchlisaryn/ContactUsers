@@ -7,16 +7,13 @@ export default function LandingPage () {
 
 
 const API = 'https://jsonplaceholder.typicode.com/posts'
-console.log(API)
 
 const [user, setUser] = useState([])
-
-   const {userId} = useParams(user)
 
     useEffect(() => {
         axios.get(API)
         .then((Response) => {
-            console.log(Response)
+        console.log("Data user Response ==> ", Response.data)
             setUser(Response.data)
         }).catch ((error) => {
             console.log(error)

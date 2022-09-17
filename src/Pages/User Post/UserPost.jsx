@@ -24,7 +24,7 @@ export default function UserPost () {
 
     console.log("user ==>", user)
     return (
-        <div className="container">
+        <div className="container pt-5">
             <div>User ID : {user.id}</div>
             <div>{user.title}</div>
             <div>{user.body}</div>
