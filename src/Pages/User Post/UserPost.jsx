@@ -6,8 +6,6 @@ export default function UserPost () {
 
     const {userId} = useParams()
 
-    console.log("==>", userId)
-
     const API = 'https://jsonplaceholder.typicode.com/posts'
 
     const [user, setUser] = useState([])
